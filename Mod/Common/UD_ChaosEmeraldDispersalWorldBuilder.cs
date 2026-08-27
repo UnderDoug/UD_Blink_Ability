@@ -150,7 +150,7 @@ namespace XRL.World.WorldBuilders
                 { "UD Prickle Pig", 2 },
                 { "UD Burrowing Prickle Pig", 5 },
                 { "UD Dark Prickle Pig", 5 },
-                { "UD UD Metal Prickle Pig", 3 },
+                { "UD Metal Prickle Pig", 3 },
             };
 
             string blueprint = superBoss
