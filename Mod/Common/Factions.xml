@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <factions>
-
   <faction
       Name="UD_PricklePigs"
       DisplayName="Prickle Pigs"
@@ -51,6 +50,7 @@
   <faction
       Name="UD_DarkPricklePigs"
       DisplayName="Dark Prickle Pigs"
+      Old="false"
       Parent="UD_PricklePigs"
       InitialPlayerReputation="-800"
       PositiveSound="Sounds/Reputation/sfx_reputation_unshelledReptiles_positive"

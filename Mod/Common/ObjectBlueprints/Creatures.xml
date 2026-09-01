@@ -416,6 +416,46 @@
     <tag Name="SpeciesOverride" Value="ud prickle pig" />
   </object>
 
+  <object Name="UD_PricklePigs Cherub" Inherits="Base_UD_PricklePig">
+    <part Name="Render" DisplayName="prickle pig cherub"
+          RenderString="b" ColorString="&amp;Y"
+          Tile="Creatures/sibs_cherub_prickle_pig.png"
+          TileColor="" DetailColor="y" />
+    <part Name="Description" Short="" />
+    <part Name="Brain" Factions="UD_PricklePigs-100" />
+    <stat Name="Level" Value="40" />
+    <stat Name="Strength" Boost="1" />
+    <stat Name="MoveSpeed" Value="50" />
+    <stat Name="Speed" Value="115" />
+    <stat Name="AV" Value="12" />
+    <stat Name="DV" Value="6" />
+    <stat Name="Hitpoints" Value="500" />
+    <tag Name="Species" Value="prickle pig" />
+    <mutation Name="UD_Blink" Level="10" ColorChange="false" Shouts="true" />
+    <inventoryobject Blueprint="Cherubic Bite" Number="1" />
+    <tag Name="ExcludeFromDynamicEncounters" Value="*noinherit" />
+  </object>
+
+  <object Name="Mechanical UD_PricklePigs Cherub" Inherits="Base_UD_PricklePig">
+    <part Name="Render" DisplayName="mechanical prickle pig cherub"
+          RenderString="b" ColorString="&amp;C"
+          Tile="Creatures/sibs_cherub_prickle_pig_mechanical.png"
+          TileColor="" DetailColor="W" />
+    <part Name="Description" Short="" />
+    <part Name="Brain" Factions="UD_PricklePigs-100" />
+    <stat Name="Level" Value="31" />
+    <stat Name="Strength" Boost="1" />
+    <stat Name="MoveSpeed" Value="75" />
+    <stat Name="Speed" Value="105" />
+    <stat Name="AV" Value="12" />
+    <stat Name="DV" Value="3" />
+    <stat Name="Hitpoints" Value="300" />
+    <tag Name="Species" Value="prickle pig" />
+    <mutation Name="UD_Blink" Level="10" ColorChange="false" Shouts="true" />
+    <inventoryobject Blueprint="Mechanical Cherubic Bite" Number="1" />
+    <tag Name="ExcludeFromDynamicEncounters" Value="*noinherit" />
+  </object>
+
   <!-- 
       Putus Templar: Bloodhounds
   -->

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<objects ExcludeFromCorpusGeneration="true">
+  
+  <object Name="Chiliad Creature UD_PricklePigs" Inherits="Base_UD_PricklePig">
+    <part Name="Render" DisplayName="=creatureRegionAdjective= spine swine" Tile="Creatures/sibs_chiliad_prickle_pig.png" />
+    <part Name="Description" Short="An upright posture sees =pronouns.possessive= inclination towards speed displayed in a more literal forward inclination." />
+    <inventoryobject Blueprint="Chiliad Creature Claw" Number="2" />
+    <inventoryobject Blueprint="Chiliad Creature Bite" Number="1" />
+    <mixin Name="BaseChiliadCreatureStats" />
+  </object>
+  
+</objects>

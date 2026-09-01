@@ -83,6 +83,7 @@ namespace UD_Blink_Mutation
 
             Debug.Footer(3, $"{nameof(PrepareColdSteelPreset)}", $"{nameof(mutate)}(GameObject player: {player.DebugName})");
         }
+
         public static bool SetColdSteelGenotypeSubtypeSpeciesPricklePigBadass(GameObject player)
         {
             Debug.Entry(3, $"// {nameof(SetColdSteelGenotypeSubtypeSpeciesPricklePigBadass)}(GameObject player)", Indent: 1);
@@ -116,6 +117,7 @@ namespace UD_Blink_Mutation
             Debug.Entry(3, $"\\ {nameof(SetColdSteelGenotypeSubtypeSpeciesPricklePigBadass)}(GameObject player) *//", Indent: 1);
             return player.genotypeEntry?.Name == "Prickle Pig" && player.subtypeEntry?.Name == "Badass";
         }
+
         public static bool GiveColdSteelGoldEarrings(GameObject player)
         {
             Debug.Entry(3, $"// {nameof(GiveColdSteelGoldEarrings)}(GameObject player)", Indent: 1);
@@ -139,9 +141,10 @@ namespace UD_Blink_Mutation
         [ModSensitiveCacheInit]
         public static void AdditionalSetup()
         {
-            // Called at game startup and whenever mod configuration changes
+            if (CherubimSpawner.Factions?.Contains("UD_PricklePigs") is false)
+                CherubimSpawner.Factions.Add("UD_PricklePigs");
         }
-    } //!-- public static class UD_Blink_Mutation_ModBasedInitialiser
+    }
 
     [HasGameBasedStaticCache]
     public static class UD_Blink_Mutation_GameBasedInitialiser
@@ -153,7 +156,7 @@ namespace UD_Blink_Mutation
 
             // The.Game registered events should go here.
         }
-    } //!-- public static class UD_Blink_Mutation_GameBasedInitialiser
+    }
 
     [PlayerMutator]
     public class UD_Blink_Mutation_OnPlayerLoad : IPlayerMutator
@@ -162,7 +165,7 @@ namespace UD_Blink_Mutation
         {
             // Gets called once when the player is first generated
         }
-    } //!-- public class UD_Blink_Mutation_OnPlayerLoad : IPlayerMutator
+    }
 
     [HasCallAfterGameLoaded]
     public class UD_Blink_Mutation_OnLoadGameHandler
@@ -172,5 +175,5 @@ namespace UD_Blink_Mutation
         {
             // Gets called every time the game is loaded but not during generation
         }
-    } //!-- public class UD_Blink_Mutation_OnLoadGameHandler
+    }
 }
