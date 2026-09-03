@@ -6,6 +6,9 @@
     <part Name="Description" Short="An upright posture sees =pronouns.possessive= inclination towards speed displayed in a more literal forward inclination." />
     <inventoryobject Blueprint="Chiliad Creature Claw" Number="2" />
     <inventoryobject Blueprint="Chiliad Creature Bite" Number="1" />
+    <inventoryobject Blueprint="Plastifer Gloves" Number="1" IntProperties="AlwaysEquipAsArmor:1" />
+    <inventoryobject Blueprint="UD Gold Ring" Number="2d3-1" IntProperties="AlwaysEquipAsArmor:1" />
+    <inventoryobject Blueprint="UD Red Plastifer Runners" Number="1" IntProperties="AlwaysEquipAsArmor:1" />
     <mixin Name="BaseChiliadCreatureStats" />
   </object>
   

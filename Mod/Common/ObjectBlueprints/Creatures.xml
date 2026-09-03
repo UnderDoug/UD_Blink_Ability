@@ -6,13 +6,20 @@
       Specific creatures will need to have the color change turned off.
    -->
   <object Name="Troll King 3" Load="Merge">
-    <mutation Name="UD_Blink" DisplayName="Blink" Level="10" ColorChange="false" PhysicalFeatures="false" />
+    <mutation Name="UD_Blink" DisplayName="Blink"
+              Level="10"
+              ColorChange="false"
+              PhysicalFeatures="false" />
     <intproperty Name="RapidLevel_UD_Blink" Value="6" />
     <part Name="AI_UD_Blinker" />
   </object>
   
   <object Name="Warden Esthers" Load="Merge">
-    <part Name="AI_UD_Flickerer" BaseMaxFlickerCharges="5" BaseBlinkRange="12" FlickerChargesAtLeastToFlicker="3" IdleFlickerTurnThreshold="60" />
+    <part Name="AI_UD_Flickerer"
+          BaseMaxFlickerCharges="5"
+          BaseBlinkRange="12"
+          FlickerChargesAtLeastToFlicker="3"
+          IdleFlickerTurnThreshold="60" />
   </object>
   
   <!-- 
@@ -24,38 +31,28 @@
           RenderString="x" Tile="Creatures/Prickle_Pig.png" 
           ColorString="&amp;B" TileColor="&amp;B" DetailColor="w" />
     <part Name="Physics" Weight="80" />
-    <mutation Name="UD_Blink" DisplayName="Blink" Level="5" Shouts="false" PhysicalFeatures="false" ShoutsAreThirdPerson="true" />
+    <mutation Name="UD_Blink" DisplayName="Blink"
+              Level="5"
+              Shouts="false" ShoutsAreThirdPerson="true"
+              DoNani="false" PhysicalFeatures="false" />
     <mutation Name="Quills" DisplayName="Quills" Level="5" />
     <mutation Name="HeightenedSpeed" DisplayName="Heightened Quickness" Level="2" />
     <part Name="Brain" Wanders="true" Factions="UD_PricklePigs-100" />
     <part Name="Body" Anatomy="TailedBiped" />
+    <tag Name="BodyDisplayName" Value="Prickle Pig" />
     <part Name="Description" Short="A small trembling spheroid =verb:tumble:afterpronoun= unimpeded by friction through =pronouns.possessive= surroundings. Easily misconstrued for fear, =pronouns.possessive= incessant vibration indicates an other simple fact: =pronouns.Subjective==verb:'ve:afterpronoun= gotta go {{B|fast}}." />
     <part Name="ConversationScript" ConversationID="Base_UD_PricklePig" />
     <part Name="Corpse" CorpseChance="80" CorpseBlueprint="UD Prickle Pig Corpse" />
-    <part Name="AISelfPreservation" Threshold="30" />
-    <part Name="Swarmer" />
     <stat Name="Hitpoints" sValue="5,2d4,(t-1)d10,(v)" />
     <stat Name="Level" Value="8" />
     <stat Name="Speed" Value="110" />
-    <skill Name="Acrobatics" />
-    <skill Name="Acrobatics_Dodge" />
-    <skill Name="Acrobatics_Jump" />
-    <skill Name="Endurance" />
-    <skill Name="Endurance_Weathered" />
-    <skill Name="Tactics" />
-    <skill Name="Tactics_Run" />
-    <skill Name="Tactics_Hurdle" />
-    <skill Name="Tactics_Juke" />
-    <skill Name="ShortBlades" />
-    <skill Name="ShortBlades_Expertise" />
+    <part Name="Swarmer" />
     <tag Name="Prickle Pig" />
     <tag Name="Species" Value="prickle pig" />
     <tag Name="SpeciesOverride" Value="ud prickle pig" />
     <tag Name="Genotype" Value="Prickle Pig" />
     <tag Name="Class" Value="prickle pig" />
     <tag Name="Culture" Value="Prickle Pig" />
-    <tag Name="Role" Value="Skirmisher" />
-    <tag Name="customMeleeOrder" Value="abilities,defensiveAbilities,items,defensiveItems,missile" />
     <tag Name="HeroNameTitleWiseDescriptor" Value="Knowledgeable,Learned,Experienced,Well-Travelled,Speedy,Quick,Fast,Blurry" />
     <tag Name="HeroNameTitleMayorSyn" Value="prickle-sultan,prickle-monarch,prickle-mayor,prickle-elder" />
     <tag Name="HeroNameTitleMayorSynCap" Value="Prickle-Sultan,Prickle-Monarch,Prickle-Mayor,Prickle-Elder" />
@@ -78,6 +75,7 @@
     <tag Name="PunchSound" Value="Sounds/Creatures/VO/sfx_creature_animal_swine_vo_attack"/>
     <tag Name="SimpleConversation" Value="Gotta go fast!" />
     <tag Name="PetResponse" Value="=subject.T= =verb:vibrate= restlessly." />
+    <inventoryobject Blueprint="UD_PricklePig_Bite" Number="1" />
     <xtagTextFragments
       Skin="prickles"
       PoeticFeatures="odd hue,prickly fur,needle-point quills,ball-like shape,ability to go fast"
@@ -90,12 +88,6 @@
       ArableLand="long stretches of uninterupted grassland"
       ValuedOre="relics,gems,jewelry"
       />
-    <inventoryobject Blueprint="UD_PricklePig_Bite" Number="1" />
-    <!--inventoryobject Blueprint="Chaos Emerald" Number="1" IntProperties="AlwaysEquipAsArmor:1" /-->
-    <inventoryobject Blueprint="Plastifer Gloves" Number="1" Chance="75" IntProperties="AlwaysEquipAsArmor:1" />
-    <tag Name="InventoryPopulationTable" Value="UD Prickle Pig Equipment Broad" />
-    <inventoryobject Blueprint="UD Gold Ring" IntProperties="AlwaysEquipAsArmor:1" Number="0-4" />
-    <inventoryobject Blueprint="Waterskin" Number="0-2" />
     <tag Name="BaseObject" Value="*noinherit" />
     <tag Name="ExcludeFromDynamicEncounters" Value="*noinherit" />
   </object>
@@ -112,28 +104,13 @@
     <removemutation Name="UD_Blink" />
     <removemutation Name="Quills" />
     <removemutation Name="HeightenedSpeed" />
+    <removepart Name="Swarmer" />
     <stat Name="Level" Value="1" />
     <stat Name="Speed" Value="100" />
-    <removepart Name="Swarmer" />
-    <removeskill Name="Acrobatics" />
-    <removeskill Name="Acrobatics_Dodge" />
-    <removeskill Name="Acrobatics_Jump" />
-    <removeskill Name="Endurance" />
-    <removeskill Name="Endurance_Weathered" />
-    <removeskill Name="Tactics" />
-    <removeskill Name="Tactics_Hurdle" />
-    <removeskill Name="Tactics_Juke" />
-    <removeskill Name="ShortBlades" />
-    <removeskill Name="ShortBlades_Expertise" />
-    <removepart Name="AISelfPreservation" />
+    <stat Name="Hitpoints" sValue="(v)" />
+    <removeinventoryobject Blueprint="UD_PricklePig_Bite" />
     <tag Name="BaseObject" Value="*noinherit" />
     <tag Name="ExcludeFromDynamicEncounters" Value="*noinherit" />
-    <removetag Name="customMeleeOrder" />
-    <removetag Name="Role" />
-    <removetag Name="InventoryPopulationTable" />
-    <removeinventoryobject Blueprint="Plastifer Gloves" />
-    <removeinventoryobject Blueprint="UD Gold Ring" />
-    <removeinventoryobject Blueprint="Waterskin" />
   </object>
   
   <object Name="UD Prickle Pig" Inherits="Base_UD_PricklePig">
@@ -143,20 +120,42 @@
           ColorString="&amp;B" TileColor="&amp;B" DetailColor="w" />
     <tag Name="Subtype" Value="Speed Ball" />
     <tag Name="HeroNameTitleSubtype" Value="{{B|Speed Ball}}" />
+    <part Name="Description" Short="A small trembling spheroid =verb:tumble:afterpronoun= unimpeded by friction through =pronouns.possessive= surroundings. Easily misconstrued for fear, =pronouns.possessive= incessant vibration indicates an other simple fact: =pronouns.Subjective==verb:'ve:afterpronoun= gotta go {{B|fast}}." />
+    <part Name="ConversationScript" ConversationID="Base_UD_PricklePig" />
     <part Name="ConversationScript" ConversationID="UD_PricklePig" />
     <tag Name="SimpleConversation" Value="Gotta go fast!~No time for a lengthy chat!~Do you have any idea how fast I truly am?~Still fast!" />
-    <mutation Name="UD_Blink" DisplayName="Blink" Level="5" BaseRange="5" TileColor="B" Shouts="false" DoNani="false" PhysicalFeatures="false" />
+    <mutation Name="UD_Blink" DisplayName="Blink"
+              Level="5" BaseRange="5"
+              TileColor="B" />
     <part Name="AI_UD_Flickerer" IdleFlickerTurnThreshold="10" />
+    <part Name="AISelfPreservation" Threshold="30" />
+    <skill Name="Acrobatics" />
+    <skill Name="Acrobatics_Dodge" />
+    <skill Name="Acrobatics_Jump" />
+    <skill Name="Endurance" />
+    <skill Name="Endurance_Weathered" />
+    <skill Name="Tactics" />
+    <skill Name="Tactics_Run" />
+    <skill Name="Tactics_Hurdle" />
+    <skill Name="Tactics_Juke" />
+    <skill Name="ShortBlades" />
+    <skill Name="ShortBlades_Expertise" />
+    <tag Name="Role" Value="Skirmisher" />
+    <tag Name="customMeleeOrder" Value="abilities,defensiveAbilities,items,defensiveItems,missile" />
+    <tag Name="InventoryPopulationTable" Value="UD Prickle Pig Equipment Broad" />
+    <inventoryobject Blueprint="Plastifer Gloves" Number="1" Chance="25" IntProperties="AlwaysEquipAsArmor:1" />
+    <inventoryobject Blueprint="UD Gold Ring" Number="2d3-2" IntProperties="AlwaysEquipAsArmor:1" />
+    <inventoryobject Blueprint="Waterskin" Number="0-2" />
+    <inventoryobject Blueprint="UD Red Plastifer Runners" Number="1" Chance="25" IntProperties="AlwaysEquipAsArmor:1" />
+    <tag Name="DynamicObjectsTable:PricklePigs" />
+    <tag Name="DynamicObjectsTable:MinionPricklePigs" />
+    <tag Name="LairMinions" Value="DynamicObjectsTable:MinionPricklePigs" />
     <tag Name="DynamicObjectsTable:Saltdunes_Creatures" />
     <tag Name="DynamicObjectsTable:Saltmarsh_Creatures" />
     <tag Name="DynamicObjectsTable:Hills_Creatures" />
     <tag Name="DynamicObjectsTable:Flowerfields_Creatures" />
     <tag Name="DynamicObjectsTable:Ruins_Creatures" />
     <tag Name="DynamicObjectsTable:Ruins_Creatures:Weight" Value="2" />
-    <inventoryobject Blueprint="UD Red Plastifer Runners" Number="1" Chance="25" IntProperties="AlwaysEquipAsArmor:1" />
-    <tag Name="DynamicObjectsTable:PricklePigs" />
-    <tag Name="DynamicObjectsTable:MinionPricklePigs" />
-    <tag Name="LairMinions" Value="DynamicObjectsTable:MinionPricklePigs" />
   </object>
   
   <object Name="UD Super Prickle Pig" Inherits="UD Prickle Pig">
@@ -168,6 +167,8 @@
     <tag Name="NoLibrarian" />
     <tag Name="ExcludeFromVillagePopulations" />
     <tag Name="AggregateWith" Value="UD Super Prickle Pig" />
+    <inventoryobject Blueprint="UD Red Plastifer Runners" Number="1" Chance="100" />
+    <inventoryobject Blueprint="UD Gold Ring" Number="4d3-2" />
   </object>
   
   <object Name="UD Super Leader Prickle Pig" Inherits="UD Super Prickle Pig">
@@ -180,18 +181,33 @@
           RenderString="x" Tile="Creatures/Prickle_Pig.png" 
           ColorString="&amp;R" TileColor="&amp;R" DetailColor="Y" />
     <part Name="Description" Short="A small stout spheroid =verb:scratch:afterpronoun= around =pronouns.possessive= surroundings seemingly searching for something... {{G|valuable}}. Possessed of =pronouns.reflexive=, =pronouns.subjective= =verb:pay:afterpronoun= little mind to would-be threats, unless, of course, they would serve as a perfect opportunity to show off =pronouns.possessive= {{R|martial}} {{Y|prowess}}." />
-    <mutation Name="UD_Blink" DisplayName="Blink" Level="8" TileColor="R" Shouts="false" DoNani="false" PhysicalFeatures="false" />
+    <mutation Name="UD_Blink" DisplayName="Blink"
+              Level="8" TileColor="R"
+              Shouts="false" DoNani="false"
+              PhysicalFeatures="false" />
     <mutation Name="HeightenedSpeed" DisplayName="Heightened Quickness" Level="4" />
     <mutation Name="BurrowingClaws" DisplayName="Burrowing Claws" Level="8" PathAsBurrower ="true" />
-    <part Name="AISelfPreservation" Threshold="20" />
     <part Name="AI_UD_SquareUp" IgnoreSameCreatureType="true" IgnoreCreatures="Prickle Pig" IsMerciful="true" MercyThreshold="25" />
+    <part Name="AISelfPreservation" Threshold="20" />
     <stat Name="Level" Value="16" />
     <stat Name="Hitpoints" Value="34" />
+    <skill Name="Acrobatics" />
+    <skill Name="Acrobatics_Dodge" />
+    <skill Name="Acrobatics_Jump" />
     <skill Name="Discipline" />
     <skill Name="Discipline_Lionheart" />
+    <skill Name="Endurance" />
+    <skill Name="Endurance_Weathered" />
+    <skill Name="Tactics" />
+    <skill Name="Tactics_Run" />
+    <skill Name="Tactics_Hurdle" />
+    <skill Name="Tactics_Juke" />
+    <skill Name="ShortBlades" />
+    <skill Name="ShortBlades_Expertise" />
     <tag Name="Role" Value="Tank" />
     <tag Name="Subtype" Value="Relic Hunter" />
     <tag Name="HeroNameTitleSubtype" Value="{{R|Relic}} {{Y|Hunter}}" />
+    <tag Name="customMeleeOrder" Value="abilities,defensiveAbilities,items,defensiveItems,missile" />
     <part Name="ConversationScript" ConversationID="UD_BurrowingPricklePig" />
     <tag Name="SimpleConversation" Value="Looking for relics!~Looking for a good fight!~Seen any shiny gems?" />
     <xtagTextFragments
@@ -203,19 +219,21 @@
       SacredThing="relics,gems,jewelry,ruins of an ancient civilization,a good pair of climbing boots"
       ArableLand="ruins of an ancient civilization"
       />
+    <tag Name="InventoryPopulationTable" Value="UD Prickle Pig Equipment Broad" />
+    <inventoryobject Blueprint="UD Gold Ring" Number="2d3-2" IntProperties="AlwaysEquipAsArmor:1" />
+    <inventoryobject Blueprint="Waterskin" Number="0-2" />
+    <inventoryobject Blueprint="UD Spiked Climbers" Number="1" Chance="35" IntProperties="AlwaysEquipAsArmor:1" />
+    <inventoryobject Blueprint="UD Digging Gloves" Number="1" Chance="35" IntProperties="AlwaysEquipAsArmor:1" />
+    <inventoryobject Blueprint="@Junk 6" Number="1d4-1" />
+    <tag Name="DynamicObjectsTable:PricklePigs" />
+    <tag Name="DynamicObjectsTable:MinionPricklePigs" />
+    <tag Name="LairMinions" Value="DynamicObjectsTable:MinionPricklePigs" />
     <tag Name="DynamicObjectsTable:DesertCanyon_Creatures" />
     <tag Name="DynamicObjectsTable:Flowerfields_Creatures" />
     <tag Name="DynamicObjectsTable:Jungle_Creatures" />
     <tag Name="DynamicObjectsTable:BananaGrove_Creatures" />
     <tag Name="DynamicObjectsTable:Ruins_Creatures" />
     <tag Name="DynamicObjectsTable:Ruins_Creatures:Weight" Value="2" />
-    <inventoryobject Blueprint="UD Spiked Climbers" Number="1" Chance="25" IntProperties="AlwaysEquipAsArmor:1" />
-    <removeinventoryobject Blueprint="Plastifer Gloves" />
-    <inventoryobject Blueprint="UD Digging Gloves" Number="1" Chance="25" IntProperties="AlwaysEquipAsArmor:1" />
-    <inventoryobject Blueprint="@Junk 6" Number="1d4-1" />
-    <tag Name="DynamicObjectsTable:PricklePigs" />
-    <tag Name="DynamicObjectsTable:MinionPricklePigs" />
-    <tag Name="LairMinions" Value="DynamicObjectsTable:MinionPricklePigs" />
   </object>
 
   <object Name="UD Super Burrowing Prickle Pig" Inherits="UD Burrowing Prickle Pig">
@@ -226,6 +244,9 @@
     <removetag Name="DynamicObjectsTable:MinionPricklePigs" />
     <tag Name="NoLibrarian" />
     <tag Name="ExcludeFromVillagePopulations" />
+    <inventoryobject Blueprint="UD Gold Ring" Number="4d3-2" />
+    <inventoryobject Blueprint="UD Spiked Climbers" Number="1" Chance="100" />
+    <inventoryobject Blueprint="UD Digging Gloves" Number="1" Chance="100" />
   </object>
 
   <object Name="UD Super Leader Burrowing Prickle Pig" Inherits="UD Super Burrowing Prickle Pig">
@@ -251,15 +272,28 @@
     <part Name="Brain" Wanders="true" Hostile="true" Factions="UD_DarkPricklePigs-100,UD_PricklePigs-25" />
     <stat Name="Level" Value="32" />
     <stat Name="Hitpoints" Value="165" />
+    <removepart Name="Swarmer" />
+    <skill Name="Acrobatics" />
+    <skill Name="Acrobatics_Dodge" />
+    <skill Name="Acrobatics_Jump" />
     <skill Name="Discipline" />
     <skill Name="Discipline_Lionheart" />
     <skill Name="Discipline_Conatus" />
+    <skill Name="Endurance" />
+    <skill Name="Endurance_Weathered" />
+    <skill Name="Tactics" />
+    <skill Name="Tactics_Run" />
+    <skill Name="Tactics_Hurdle" />
+    <skill Name="Tactics_Juke" />
+    <skill Name="ShortBlades" />
+    <skill Name="ShortBlades_Expertise" />
     <tag Name="Dark Prickle Pig" />
     <tag Name="Class" Value="dark prickle pig" />
     <tag Name="Culture" Value="Dark Prickle Pig" />
     <tag Name="Role" Value="Brute" />
     <tag Name="Subtype" Value="Imposter" />
     <tag Name="HeroNameTitleSubtype" Value="{{K|Ul{{R|t}}imate Li{{R|f}}eform}}" />
+    <tag Name="customMeleeOrder" Value="abilities,defensiveAbilities,items,defensiveItems,missile" />
     <part Name="ConversationScript" ConversationID="UD_DarkPricklePig" />
     <tag Name="SimpleConversation" Value="Psssh... maybe you {{Y|should}} take it personnel.~Out of my way, you're too slow!~Those gems are mine..." />
     <tag Name="SecretAdjectives" Value="dark prickle pig" />
@@ -276,6 +310,12 @@
       SacredThing="relics,gems,jewelry,being the best,the end of that blue prickle pig"
       ArableLand="somewhere to actually belong"
       />
+    <tag Name="InventoryPopulationTable" Value="UD Prickle Pig Equipment Broad" />
+    <inventoryobject Blueprint="Plastifer Gloves" Number="1" Chance="75" />
+    <inventoryobject Blueprint="UD Gold Ring" Number="2d3-2" IntProperties="AlwaysEquipAsArmor:1" />
+    <inventoryobject Blueprint="Waterskin" Number="0-2" />
+    <inventoryobject Blueprint="Rocket Runners" Number="1" IntProperties="AlwaysEquipAsArmor:1" />
+    <inventoryobject Blueprint="@Junk 6" Number="1d2-1" />
     <tag Name="DynamicObjectsTable:DarkPricklePigs" />
     <tag Name="DynamicObjectsTable:MinionDarkPricklePigs" />
     <tag Name="LairMinions" Value="DynamicObjectsTable:MinionDarkPricklePigs" />
@@ -284,8 +324,6 @@
     <tag Name="DynamicObjectsTable:BaroqueRuins_Creatures:Weight" Value="2" />
     <tag Name="DynamicObjectsTable:PalladiumReef_Creatures" />
     <tag Name="DynamicObjectsTable:MoonStair_Creatures" />
-    <inventoryobject Blueprint="Rocket Runners" Number="1" Chance="25" IntProperties="AlwaysEquipAsArmor:1" />
-    <inventoryobject Blueprint="@Junk 6" Number="1d2-1" />
   </object>
 
   <object Name="UD Super Dark Prickle Pig" Inherits="UD Dark Prickle Pig">
@@ -295,6 +333,7 @@
     <removetag Name="DynamicObjectsTable:MinionDarkPricklePigs" />
     <tag Name="NoLibrarian" />
     <tag Name="ExcludeFromVillagePopulations" />
+    <inventoryobject Blueprint="UD Gold Ring" Number="4d3-2" />
   </object>
   
   <object Name="UD Metal Prickle Pig" Inherits="Base_UD_PricklePig">
@@ -306,7 +345,8 @@
     <part Name="Physics" Weight="220" />
     <builder Name="Roboticized" ChanceOneIn="1" />
     <tag Name="Gender" Value="neuter" />
-    <mutation Name="UD_Blink" DisplayName="Blink" Level="10" TileColor="b"
+    <mutation Name="UD_Blink" DisplayName="Blink"
+              Level="10" TileColor="b"
               Shouts="true" Shout="TARGET: =object.name=" ShoutColor="b"
               DoNani="false" PhysicalFeatures="false" />
     <intproperty Name="RapidLevel_UD_Blink" Value="9" />
@@ -322,18 +362,30 @@
     <stat Name="Intelligence" sValue="9,1d3,(t-1)d1" />
     <stat Name="Willpower" sValue="20,1d4,(t-1)d3" />
     <stat Name="Ego" sValue="5,1d2,(t-1)d2-1" />
-    <removepart Name="AISelfPreservation" />
     <stat Name="Level" Value="40" />
     <stat Name="Hitpoints" Value="385" />
+    <removepart Name="Swarmer" />
+    <skill Name="Acrobatics" />
+    <skill Name="Acrobatics_Dodge" />
+    <skill Name="Acrobatics_Jump" />
     <skill Name="Discipline" />
     <skill Name="Discipline_Lionheart" />
     <skill Name="Discipline_Conatus" />
+    <skill Name="Endurance" />
+    <skill Name="Endurance_Weathered" />
+    <skill Name="Tactics" />
+    <skill Name="Tactics_Run" />
+    <skill Name="Tactics_Hurdle" />
+    <skill Name="Tactics_Juke" />
+    <skill Name="ShortBlades" />
+    <skill Name="ShortBlades_Expertise" />
     <tag Name="Dark Prickle Pig" />
     <tag Name="Class" Value="dark prickle pig" />
     <tag Name="Culture" Value="UD Metal Prickle Pig" />
     <tag Name="Role" Value="Specialist" />
     <tag Name="Subtype" Value="Imposter" />
     <tag Name="HeroNameTitleSubtype" Value="{{r|{{W|M}}arv{{Y|e}}l}} of {{r|{{W|E}}ngin{{Y|e}}ering}}" />
+    <tag Name="customMeleeOrder" Value="abilities,defensiveAbilities,items,defensiveItems,missile" />
     <part Name="ConversationScript" ConversationID="UD_MetalPricklePig" />
     <tag Name="SimpleConversation" Value="{{C|TARGET:}} =object.name=\n{{C|STATUS: acknowledged}}\n\n{{C|OPERATION: awaiting additional input...}}" />
     <tag Name="SecretAdjectives" Value="dark prickle pig" />
@@ -360,12 +412,15 @@
     <tag Name="DynamicObjectsTable:BaroqueRuins_Creatures:Weight" Value="2" />
     <tag Name="DynamicObjectsTable:PalladiumReef_Creatures" />
     <tag Name="DynamicObjectsTable:MoonStair_Creatures" />
-    <removeinventoryobject Blueprint="Plastifer Gloves" />
+    <tag Name="InventoryPopulationTable" Value="UD Prickle Pig Equipment Broad" />
+    <inventoryobject Blueprint="UD Gold Ring" Number="2d3-2" IntProperties="AlwaysEquipAsArmor:1" />
+    <inventoryobject Blueprint="Waterskin" Number="0-2" />
     <inventoryobject Blueprint="@Junk 6" Number="1d3-1" />
     <inventoryobject Blueprint="@Junk 7" Number="1d2-1" />
-    <inventoryobject Blueprint="UD_MetalPricklePig_Bite" Number="1" Chance="100" IntProperties="AlwaysEquipAsWeapon:1" />
-    <inventoryobject Blueprint="UD_MetalPricklePig_Claw" Number="2" Chance="100" IntProperties="AlwaysEquipAsWeapon:1" />
-    <inventoryobject Blueprint="UD Integrated Rocket Runners" Number="1" Chance="100" IntProperties="AlwaysEquipAsArmor:1" />
+    <removeinventoryobject Blueprint="UD_PricklePig_Bite" />
+    <inventoryobject Blueprint="UD_MetalPricklePig_Bite" Number="1" IntProperties="AlwaysEquipAsWeapon:1" />
+    <inventoryobject Blueprint="UD_MetalPricklePig_Claw" Number="2" IntProperties="AlwaysEquipAsWeapon:1" />
+    <inventoryobject Blueprint="UD Integrated Rocket Runners" Number="1" IntProperties="AlwaysEquipAsArmor:1" />
   </object>
   <object Name="UD_MetalPricklePig_Bite" Inherits="UD_PricklePig_Bite">
     <part Name="Render" DisplayName="metal bite" ColorString="&amp;C" />
@@ -407,12 +462,16 @@
     <removetag Name="DynamicObjectsTable:MinionDarkPricklePigs" />
     <tag Name="NoLibrarian" />
     <tag Name="ExcludeFromVillagePopulations" />
+    <inventoryobject Blueprint="UD Gold Ring" Number="4d3-2" />
   </object>
 
   <object Name="UD Prickle Pig Golem" Inherits="Base_UD_PricklePig">
     <mixin Name="BaseVehicleGolem" />
     <part Name="Render" DisplayName="prickle pig golem" RenderString="x" Tile="Creatures/golem_prickle_pig.png" />
-    <mutation Name="UD_Blink" ColorChange="false" Shouts="true" />
+    <mutation Name="UD_Blink" Level="10" CapOverride="10" ColorChange="false" Shouts="true" />
+    <stat Name="Strength" Boost="-2" />
+    <stat Name="MoveSpeed" Value="120" />
+    <stat Name="Speed" Value="115" />
     <tag Name="SpeciesOverride" Value="ud prickle pig" />
   </object>
 
@@ -421,6 +480,10 @@
           RenderString="b" ColorString="&amp;Y"
           Tile="Creatures/sibs_cherub_prickle_pig.png"
           TileColor="" DetailColor="y" />
+    <part Name="AI_UD_Flickerer"
+          BaseMaxFlickerCharges="6" BaseBlinkRange="4"
+          FlickerChargesAtLeastToFlicker="3"
+          IdleFlickerTurnThreshold="30" />
     <part Name="Description" Short="" />
     <part Name="Brain" Factions="UD_PricklePigs-100" />
     <stat Name="Level" Value="40" />
@@ -431,8 +494,14 @@
     <stat Name="DV" Value="6" />
     <stat Name="Hitpoints" Value="500" />
     <tag Name="Species" Value="prickle pig" />
-    <mutation Name="UD_Blink" Level="10" ColorChange="false" Shouts="true" />
+    <tag Name="AlternateCreatureType" Value="prickle pig" />
+    <mutation Name="UD_Blink" Level="10" ColorChange="false" />
+    <intproperty Name="RapidLevel_UD_Blink" Value="9" />
+    <intproperty Name="RapidLevel_Blink" Value="9" />
     <inventoryobject Blueprint="Cherubic Bite" Number="1" />
+    <inventoryobject Blueprint="Plastifer Gloves" Number="1" IntProperties="AlwaysEquipAsArmor:1" />
+    <inventoryobject Blueprint="UD Gold Ring" Number="2" IntProperties="AlwaysEquipAsArmor:1" />
+    <inventoryobject Blueprint="UD Red Plastifer Runners" Number="1" IntProperties="AlwaysEquipAsArmor:1" />
     <tag Name="ExcludeFromDynamicEncounters" Value="*noinherit" />
   </object>
 
@@ -441,6 +510,10 @@
           RenderString="b" ColorString="&amp;C"
           Tile="Creatures/sibs_cherub_prickle_pig_mechanical.png"
           TileColor="" DetailColor="W" />
+    <part Name="AI_UD_Flickerer"
+          BaseMaxFlickerCharges="4" BaseBlinkRange="4"
+          FlickerChargesAtLeastToFlicker="3"
+          IdleFlickerTurnThreshold="30" />
     <part Name="Description" Short="" />
     <part Name="Brain" Factions="UD_PricklePigs-100" />
     <stat Name="Level" Value="31" />
@@ -451,8 +524,14 @@
     <stat Name="DV" Value="3" />
     <stat Name="Hitpoints" Value="300" />
     <tag Name="Species" Value="prickle pig" />
-    <mutation Name="UD_Blink" Level="10" ColorChange="false" Shouts="true" />
+    <tag Name="AlternateCreatureType" Value="prickle pig" />
+    <mutation Name="UD_Blink" Level="10" ColorChange="false" />
+    <intproperty Name="RapidLevel_UD_Blink" Value="6" />
+    <intproperty Name="RapidLevel_Blink" Value="6" />
     <inventoryobject Blueprint="Mechanical Cherubic Bite" Number="1" />
+    <inventoryobject Blueprint="Plastifer Gloves" Number="1" IntProperties="AlwaysEquipAsArmor:1" />
+    <inventoryobject Blueprint="UD Gold Ring" Number="2" IntProperties="AlwaysEquipAsArmor:1" />
+    <inventoryobject Blueprint="UD Red Plastifer Runners" Number="1" IntProperties="AlwaysEquipAsArmor:1" />
     <tag Name="ExcludeFromDynamicEncounters" Value="*noinherit" />
   </object>
 
