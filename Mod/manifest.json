@@ -2,7 +2,7 @@
     "id": "UD_Blink_Mutation",
     "title": "{{m|Blink}} {{y|Ability}}",
     "description": "Adds a physical alternative to teleport that blinks you a short distance in one of the orthogonal directions.\n\nAbility is available via both mutation and cybernetic!\n\nAlso adds a bunch of homages to everyone's favourite {{B|blue}} speedy-boi, and his edgy purple class-mate (oc).",
-    "version": "0.0.3",
+    "version": "0.0.3.7",
     "author": "{{K-g-G-Y-G-g-K alternation|UnderDoug}}",
     "tags": "Activated Ability,Mutation,Cybernetics,Creatures,Hostiles,Factions,Balance,Harmony,Meme",
     "PreviewImage": "preview.png",
