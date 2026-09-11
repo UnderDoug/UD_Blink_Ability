@@ -145,7 +145,6 @@
     <tag Name="InventoryPopulationTable" Value="UD Prickle Pig Equipment Broad" />
     <inventoryobject Blueprint="Plastifer Gloves" Number="1" Chance="25" IntProperties="AlwaysEquipAsArmor:1" />
     <inventoryobject Blueprint="UD Gold Ring" Number="2d3-2" IntProperties="AlwaysEquipAsArmor:1" />
-    <inventoryobject Blueprint="Waterskin" Number="0-2" />
     <inventoryobject Blueprint="UD Red Plastifer Runners" Number="1" Chance="25" IntProperties="AlwaysEquipAsArmor:1" />
     <tag Name="DynamicObjectsTable:PricklePigs" />
     <tag Name="DynamicObjectsTable:MinionPricklePigs" />
@@ -221,7 +220,6 @@
       />
     <tag Name="InventoryPopulationTable" Value="UD Prickle Pig Equipment Broad" />
     <inventoryobject Blueprint="UD Gold Ring" Number="2d3-2" IntProperties="AlwaysEquipAsArmor:1" />
-    <inventoryobject Blueprint="Waterskin" Number="0-2" />
     <inventoryobject Blueprint="UD Spiked Climbers" Number="1" Chance="35" IntProperties="AlwaysEquipAsArmor:1" />
     <inventoryobject Blueprint="UD Digging Gloves" Number="1" Chance="35" IntProperties="AlwaysEquipAsArmor:1" />
     <inventoryobject Blueprint="@Junk 6" Number="1d4-1" />
@@ -313,7 +311,6 @@
     <tag Name="InventoryPopulationTable" Value="UD Prickle Pig Equipment Broad" />
     <inventoryobject Blueprint="Plastifer Gloves" Number="1" Chance="75" />
     <inventoryobject Blueprint="UD Gold Ring" Number="2d3-2" IntProperties="AlwaysEquipAsArmor:1" />
-    <inventoryobject Blueprint="Waterskin" Number="0-2" />
     <inventoryobject Blueprint="Rocket Runners" Number="1" IntProperties="AlwaysEquipAsArmor:1" />
     <inventoryobject Blueprint="@Junk 6" Number="1d2-1" />
     <tag Name="DynamicObjectsTable:DarkPricklePigs" />
@@ -414,7 +411,6 @@
     <tag Name="DynamicObjectsTable:MoonStair_Creatures" />
     <tag Name="InventoryPopulationTable" Value="UD Prickle Pig Equipment Broad" />
     <inventoryobject Blueprint="UD Gold Ring" Number="2d3-2" IntProperties="AlwaysEquipAsArmor:1" />
-    <inventoryobject Blueprint="Waterskin" Number="0-2" />
     <inventoryobject Blueprint="@Junk 6" Number="1d3-1" />
     <inventoryobject Blueprint="@Junk 7" Number="1d2-1" />
     <removeinventoryobject Blueprint="UD_PricklePig_Bite" />
