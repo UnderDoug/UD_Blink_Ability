@@ -2,7 +2,7 @@
 <factions>
   <faction
       Name="UD_PricklePigs"
-      DisplayName="Prickle Pigs"
+      DisplayName="prickle pigs"
       Parent="Swine"
       Pettable="true"
       InitialPlayerReputation="100"
@@ -49,7 +49,7 @@
 
   <faction
       Name="UD_DarkPricklePigs"
-      DisplayName="Dark Prickle Pigs"
+      DisplayName="dark prickle pigs"
       Old="false"
       Parent="UD_PricklePigs"
       InitialPlayerReputation="-800"
