@@ -20,7 +20,7 @@
     <factionworshipattitudes>
       <factionworshipattitude Name="Barathrumites" Attitude="100" />
       <factionworshipattitude Name="Urchins" Attitude="50" />
-      <factionworshipattitude Name="DarkPricklePigs" Attitude="-100" />
+      <factionworshipattitude Name="UD_DarkPricklePigs" Attitude="-100" />
       <factionworshipattitude Name="Templar" Attitude="-100" />
       <factionworshipattitude Name="SultanCult1" Attitude="50" />
       <factionworshipattitude Name="SultanCult2" Attitude="50" />
