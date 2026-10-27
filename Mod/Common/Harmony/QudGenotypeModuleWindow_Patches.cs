@@ -31,8 +31,7 @@ namespace UD_Blink_Mutation.Harmony
             {
                 var choices = new List<ChoiceWithColorIcon>();
                 foreach (var entry in __result)
-                    if (GenotypeFactory.GetGenotypeEntry(entry.Id) is GenotypeEntry genotypeEntry
-                        && genotypeEntry.CharacterBuilderModules != "NonePlease")
+                    if (GenotypeFactory.GetGenotypeEntry(entry.Id) is GenotypeEntry { CharacterBuilderModules: not "NonePlease" } genotypeEntry)
                         choices.Add(entry);
                 __result = choices;
             }

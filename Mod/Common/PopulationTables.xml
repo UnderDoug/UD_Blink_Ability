@@ -440,7 +440,7 @@
     </group>
   </population>
 
-  <population Name="Tier5BossEncounter" Load="Merge">
+  <!--population Name="Tier5BossEncounter" Load="Merge">
     <group Name="Creatures" Load="Merge">
       <table Weight="4" Number="1" Name="UD Fighting Prickle Pigs" />
       <table Weight="4" Number="1" Name="UD Templar Bloodhound Party" />
@@ -455,7 +455,7 @@
       <table Weight="5" Number="1" Name="UD Templar Bloodhound Party" />
       <table Weight="2" Number="1" Name="UD Templar Bloodhound Party Major" />
     </group>
-  </population>
+  </population-->
 
   <population Name="Aleksh_DeepCaves" Load="Merge">
     <object Chance="1" Number="1" Blueprint="UD Super Leader Burrowing Prickle Pig" />

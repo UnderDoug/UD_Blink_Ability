@@ -37,8 +37,7 @@ namespace UD_Blink_Mutation.Harmony
         {
             try
             {
-                if (__instance.data?.Entry is GenotypeEntry genotypeEntry
-                    && genotypeEntry.CharacterBuilderModules == "NonePlease")
+                if (__instance.data?.Entry is GenotypeEntry { CharacterBuilderModules: not "NonePlease" })
                     __instance.data.Genotype = "Mutated Human";
             }
             catch (Exception x)
@@ -58,8 +57,7 @@ namespace UD_Blink_Mutation.Harmony
         {
             try
             {
-                if (GenotypeFactory.GetGenotypeEntry(__result) is GenotypeEntry genotypeEntry
-                    && genotypeEntry.CharacterBuilderModules == "NonePlease")
+                if (GenotypeFactory.GetGenotypeEntry(__result) is GenotypeEntry { CharacterBuilderModules: not "NonePlease" })
                     __result = "Mutated Human";
             }
             catch (Exception x)
