@@ -22,18 +22,24 @@ namespace UD_Blink_Mutation.Harmony
         [HarmonyPatch(
             declaringType: typeof(QudGenotypeModule),
             methodName: nameof(QudGenotypeModule.handleUIEvent),
-            argumentTypes: new Type[] { typeof(string), typeof(object) },
-            argumentVariations: new ArgumentType[] { ArgumentType.Normal, ArgumentType.Normal })]
+            argumentTypes: new Type[]
+            {
+                typeof(string),
+                typeof(object)
+            },
+            argumentVariations: new ArgumentType[]
+            {
+                ArgumentType.Normal,
+                ArgumentType.Normal
+            })]
         [HarmonyPrefix]
-        public static bool handleUIEvent_NoPricklePigs_Prefix(ref QudGenotypeModule __instance, ref object __result)
+        public static void handleUIEvent_NoPricklePigs_Prefix(ref QudGenotypeModule __instance, ref object __result)
         {
             try
             {
-                GenotypeEntry genotypeEntry = __instance.data?.Entry;
-                if (genotypeEntry != null && genotypeEntry.CharacterBuilderModules == "NonePlease")
-                {
+                if (__instance.data?.Entry is GenotypeEntry genotypeEntry
+                    && genotypeEntry.CharacterBuilderModules == "NonePlease")
                     __instance.data.Genotype = "Mutated Human";
-                }
             }
             catch (Exception x)
             {
@@ -42,7 +48,6 @@ namespace UD_Blink_Mutation.Harmony
                     $"{nameof(handleUIEvent_NoPricklePigs_Prefix)}()",
                     x);
             }
-            return true;
         }
 
         [HarmonyPatch(
@@ -53,11 +58,9 @@ namespace UD_Blink_Mutation.Harmony
         {
             try
             {
-                GenotypeEntry genotypeEntry = GenotypeFactory.GetGenotypeEntry(__result);
-                if (genotypeEntry != null && genotypeEntry.CharacterBuilderModules == "NonePlease")
-                {
+                if (GenotypeFactory.GetGenotypeEntry(__result) is GenotypeEntry genotypeEntry
+                    && genotypeEntry.CharacterBuilderModules == "NonePlease")
                     __result = "Mutated Human";
-                }
             }
             catch (Exception x)
             {

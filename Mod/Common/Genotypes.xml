@@ -11,7 +11,7 @@
             Class="" 
             Tile="Creatures/Prickle_Pig_INV.png" 
             DetailColor="B" 
-            BodyObject="TailedBiped" 
+            BodyObject="UD Prickle Pig Player" 
             BaseHPGain="1-4" 
             BaseSPGain="50" 
             BaseMPGain="1" 

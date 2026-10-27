@@ -29,17 +29,12 @@ namespace UD_Blink_Mutation.Harmony
         {
             try
             {
-                List<ChoiceWithColorIcon> choiceWithColorIconCopy = new();
-                foreach (ChoiceWithColorIcon entry in __result)
-                {
-                    // CharacterBuilderModules
-                    GenotypeEntry genotypeEntry = GenotypeFactory.GetGenotypeEntry(entry.Id);
-                    if (genotypeEntry != null && genotypeEntry.CharacterBuilderModules != "NonePlease")
-                    {
-                        choiceWithColorIconCopy.Add(entry);
-                    }
-                }
-                __result = choiceWithColorIconCopy;
+                var choices = new List<ChoiceWithColorIcon>();
+                foreach (var entry in __result)
+                    if (GenotypeFactory.GetGenotypeEntry(entry.Id) is GenotypeEntry genotypeEntry
+                        && genotypeEntry.CharacterBuilderModules != "NonePlease")
+                        choices.Add(entry);
+                __result = choices;
             }
             catch (Exception x)
             {
