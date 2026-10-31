@@ -2,6 +2,7 @@ using HarmonyLib;
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 using XRL;
 using XRL.CharacterBuilds.Qud;
@@ -57,8 +58,13 @@ namespace UD_Blink_Mutation.Harmony
         {
             try
             {
-                if (GenotypeFactory.GetGenotypeEntry(__result) is GenotypeEntry { CharacterBuilderModules: not "NonePlease" })
-                    __result = "Mutated Human";
+                if (GenotypeFactory.GetGenotypeEntry(__result) is GenotypeEntry { CharacterBuilderModules: "NonePlease" })
+                    __result = __instance
+                            ?.genotypes
+                            ?.Where(g => g.CharacterBuilderModules != "NonePlease")
+                            ?.GetRandomElementCosmetic()
+                            ?.Name
+                        ?? "Mutated Human";
             }
             catch (Exception x)
             {
