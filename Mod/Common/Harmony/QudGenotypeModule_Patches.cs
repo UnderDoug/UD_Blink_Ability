@@ -38,15 +38,22 @@ namespace UD_Blink_Mutation.Harmony
         {
             try
             {
-                if (__instance.data?.Entry is GenotypeEntry { CharacterBuilderModules: not "NonePlease" })
-                    __instance.data.Genotype = "Mutated Human";
+                if (__instance.data?.Entry is not GenotypeEntry { CharacterBuilderModules: not "NonePlease" })
+                {
+                    var newSelection = __instance
+                            ?.genotypes
+                            ?.Where(g => g.CharacterBuilderModules != "NonePlease")
+                            ?.GetRandomElementCosmetic()
+                            ?.Name
+                        ?? "Mutated Human"
+                        ;
+
+                    __instance.SelectGenotype(newSelection);
+                }
             }
             catch (Exception x)
             {
-                MetricsManager.LogException(
-                    $"[{MOD_ID}] {nameof(QudGenotypeModule_Patches)}." +
-                    $"{nameof(handleUIEvent_NoPricklePigs_Prefix)}()",
-                    x);
+                MetricsManager.LogException($"[{MOD_ID}] {nameof(QudGenotypeModule_Patches)}.{nameof(handleUIEvent_NoPricklePigs_Prefix)}()", x);
             }
         }
 
@@ -58,20 +65,56 @@ namespace UD_Blink_Mutation.Harmony
         {
             try
             {
-                if (GenotypeFactory.GetGenotypeEntry(__result) is GenotypeEntry { CharacterBuilderModules: "NonePlease" })
-                    __result = __instance
+                if (__result != null
+                    && GenotypeFactory.GetGenotypeEntry(__result) is GenotypeEntry { CharacterBuilderModules: "NonePlease" })
+                {
+                    var newSelection = __instance
                             ?.genotypes
                             ?.Where(g => g.CharacterBuilderModules != "NonePlease")
                             ?.GetRandomElementCosmetic()
                             ?.Name
-                        ?? "Mutated Human";
+                        ?? "Mutated Human"
+                        ;
+
+                    __instance.SelectGenotype(newSelection);
+                }
             }
             catch (Exception x)
             {
-                MetricsManager.LogException(
-                    $"[{MOD_ID}] {nameof(QudGenotypeModule_Patches)}." +
-                    $"{nameof(getSelected_NoPricklePigs_Prefix)}()",
-                    x);
+                MetricsManager.LogException($"[{MOD_ID}] {nameof(QudGenotypeModule_Patches)}.{nameof(getSelected_NoPricklePigs_Prefix)}()", x);
+            }
+        }
+
+        [HarmonyPatch(
+            declaringType: typeof(QudGenotypeModule),
+            methodName: nameof(QudGenotypeModule.SelectGenotype),
+            argumentTypes: new Type[]
+            {
+                typeof(string),
+            },
+            argumentVariations: new ArgumentType[]
+            {
+                ArgumentType.Normal,
+            })]
+        [HarmonyPostfix]
+        public static void SelectGenotype_NoPricklePigs_Prefix(ref string id)
+        {
+            try
+            {
+                if (id != null
+                    && GenotypeFactory.GetGenotypeEntry(id) is GenotypeEntry { CharacterBuilderModules: "NonePlease" })
+                {
+                    id = GenotypeFactory.Genotypes
+                            ?.Where(g => g.CharacterBuilderModules != "NonePlease")
+                            ?.GetRandomElementCosmetic()
+                            ?.Name
+                        ?? "Mutated Human"
+                        ;
+                }
+            }
+            catch (Exception x)
+            {
+                MetricsManager.LogException($"[{MOD_ID}] {nameof(QudGenotypeModule_Patches)}.{nameof(SelectGenotype_NoPricklePigs_Prefix)}()", x);
             }
         }
     }
