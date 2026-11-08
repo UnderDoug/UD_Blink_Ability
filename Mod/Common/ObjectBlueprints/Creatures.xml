@@ -121,7 +121,6 @@
     <tag Name="Subtype" Value="Speed Ball" />
     <tag Name="HeroNameTitleSubtype" Value="{{B|Speed Ball}}" />
     <part Name="Description" Short="A small trembling spheroid =verb:tumble:afterpronoun= unimpeded by friction through =pronouns.possessive= surroundings. Easily misconstrued for fear, =pronouns.possessive= incessant vibration indicates an other simple fact: =pronouns.Subjective==verb:'ve:afterpronoun= gotta go {{B|fast}}." />
-    <part Name="ConversationScript" ConversationID="Base_UD_PricklePig" />
     <part Name="ConversationScript" ConversationID="UD_PricklePig" />
     <tag Name="SimpleConversation" Value="Gotta go fast!~No time for a lengthy chat!~Do you have any idea how fast I truly am?~Still fast!" />
     <mutation Name="UD_Blink" DisplayName="Blink"
