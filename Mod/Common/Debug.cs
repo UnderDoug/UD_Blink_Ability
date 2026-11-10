@@ -1,7 +1,11 @@
-﻿using Qud.API;
+﻿using HarmonyLib;
+
+using Qud.API;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Reflection.Emit;
+
 using UD_Blink_Mutation;
 using XRL;
 using XRL.Core;
@@ -184,6 +188,196 @@ namespace UD_Blink_Mutation
         {
             string context = Context == null ? "" : $"{Context}:";
             Entry(Verbosity, $"% Vomit: {Source} {context}", Indent, Toggle: Toggle);
+        }
+        public static CodeInstruction Vomit(
+            this CodeInstruction Instruction,
+            int Pos,
+            int PosPadding,
+            Dictionary<Label, int> LabelInstructions = null,
+            bool HaveILGen = false,
+            bool IncludeEnd = false,
+            bool Do = false)
+        {
+            if (!Do)
+            {
+                return Instruction;
+            }
+            string ciOperand = Instruction?.operand?.VomitOperand(PosPadding, LabelInstructions, HaveILGen, Do);
+            string codePos = $"[{Pos.ToString().PadLeft(PosPadding, '0')}]";
+            if (HaveILGen)
+            {
+                codePos = $"IL_{Pos:X4}:";
+            }
+            UnityEngine.Debug.Log($"{codePos} {Instruction.opcode,-10} {ciOperand}");
+            if (IncludeEnd && Instruction.opcode.IsEndOfSection())
+            {
+                UnityEngine.Debug.Log("");
+            }
+            return Instruction;
+        }
+
+        public static CodeMatch Vomit(
+            this CodeMatch CodeMatch,
+            int Pos,
+            int PosPadding,
+            Dictionary<Label, int> LabelInstructions = null,
+            bool HaveILGen = false,
+            bool IncludeEnd = false,
+            bool Do = false)
+        {
+            if (!Do)
+            {
+                return CodeMatch;
+            }
+            string ciOperand = CodeMatch?.operand?.VomitOperand(PosPadding, LabelInstructions, HaveILGen, Do);
+            string codePos = $"[{Pos.ToString().PadLeft(PosPadding, '0')}]";
+            if (HaveILGen)
+            {
+                codePos = $"IL_{Pos:X4}:";
+            }
+            UnityEngine.Debug.Log($"{codePos} {CodeMatch.opcode,-10} {ciOperand}");
+            if (IncludeEnd && CodeMatch.opcode.IsEndOfSection())
+            {
+                UnityEngine.Debug.Log("");
+            }
+            return CodeMatch;
+        }
+        public static CodeMatch[] Vomit(
+            this CodeMatch[] CodeMatchs,
+            string Context = null,
+            string EndContext = null,
+            Dictionary<Label, int> LabelInstructions = null,
+            bool HaveILGen = false,
+            bool IncludeEnd = false,
+            bool Do = false)
+        {
+            if (!Do)
+            {
+                return CodeMatchs;
+            }
+            int pos = 0;
+            int posPadding = Math.Max(4, (CodeMatchs.Length + 1).ToString().Length);
+
+            if (!Context.IsNullOrEmpty())
+            {
+                UnityEngine.Debug.Log(Context);
+            }
+            foreach (CodeMatch codeMatch in CodeMatchs)
+            {
+                bool includeEnd = (pos < CodeMatchs.Length - 1) && IncludeEnd;
+                codeMatch.Vomit(pos++, posPadding, LabelInstructions, HaveILGen, includeEnd, Do);
+            }
+            if (!EndContext.IsNullOrEmpty())
+            {
+                UnityEngine.Debug.Log(EndContext);
+            }
+            return CodeMatchs;
+        }
+
+        public static string VomitOperand(
+            this object Operand,
+            int PosPadding,
+            Dictionary<Label, int> LabelInstructions = null,
+            bool HaveILGen = false,
+            bool Do = false)
+        {
+            if (!Do)
+            {
+                return null;
+            }
+            string operandString = Operand?.ToString();
+            if (Operand?.GetType() == typeof(string))
+            {
+                operandString = Operand?.ToString()?.ToLiteral(Quotes: true);
+            }
+            else
+            if (Operand is Label operandLabel)
+            {
+                string labelString = "????";
+                if (LabelInstructions.IsNullOrEmpty() && LabelInstructions.ContainsKey(operandLabel))
+                {
+                    labelString = LabelInstructions[operandLabel].ToString().PadLeft(PosPadding, '0');
+                    if (HaveILGen)
+                    {
+                        labelString = $"IL_{LabelInstructions[operandLabel]:X4}";
+                    }
+                }
+                operandString = $"[{labelString}]";
+            }
+            return operandString;
+        }
+        public static CodeMatcher Vomit(this CodeMatcher CodeMatcher, ILGenerator Generator, bool Do = false)
+        {
+            if (Do)
+            {
+                bool haveILGen = false && Generator != null;
+                Dictionary<Label, int> labelInstructions = new();
+                int originalPos = CodeMatcher.Pos;
+                CodeMatcher.Start();
+                do
+                {
+                    CodeInstruction ci = CodeMatcher.Instruction;
+                    int labelPos = haveILGen ? Generator.ILOffset : CodeMatcher.Pos;
+                    if (ci.labels.IsNullOrEmpty())
+                    {
+                        continue;
+                    }
+                    foreach (Label label in ci.labels)
+                    {
+                        if (!labelInstructions.ContainsKey(label))
+                        {
+                            labelInstructions.Add(label, labelPos);
+                        }
+                        else
+                        {
+                            labelInstructions[label] = labelPos;
+                        }
+                    }
+                }
+                while (CodeMatcher.Advance(1).IsValid);
+                CodeMatcher.Start();
+
+                int counterPadding = Math.Max(4, (CodeMatcher.Instructions().Count + 1).ToString().Length);
+                do
+                {
+                    int counter = haveILGen ? Generator.ILOffset : CodeMatcher.Pos;
+                    if (CodeMatcher.Instruction is CodeInstruction ci)
+                    {
+                        ci.Vomit(
+                            Pos: counter,
+                            PosPadding: counterPadding,
+                            LabelInstructions: labelInstructions,
+                            HaveILGen: haveILGen,
+                            IncludeEnd: true,
+                            Do: Do);
+                    }
+                }
+                while (CodeMatcher.Advance(1).IsValid);
+                CodeMatcher.Start().Advance(originalPos);
+            }
+            return CodeMatcher;
+        }
+        public static CodeMatcher Vomit(this CodeMatcher CodeMatcher, bool Do = false)
+        {
+            return CodeMatcher.Vomit(null, Do);
+        }
+        public static IEnumerable<CodeInstruction> Vomit(this IEnumerable<CodeInstruction> Instructions, bool Do = false)
+        {
+            return new CodeMatcher(Instructions).Vomit(Do).InstructionEnumeration();
+        }
+        public static CodeMatcher VomitInstruction(this CodeMatcher CodeMatcher, string Context = null)
+        {
+            int counter = CodeMatcher.Pos;
+            int counterPadding = Math.Max(4, (CodeMatcher.Length + 1).ToString().Length);
+
+            CodeInstruction ci = CodeMatcher.Instruction;
+            string ciOperand = ci?.operand?.ToString();
+            if (ci?.operand?.GetType() == typeof(string))
+            {
+                ciOperand = ci.operand?.ToString()?.ToLiteral(Quotes: true);
+            }
+            UnityEngine.Debug.Log($"[{counter.ToString().PadLeft(counterPadding, '0')}] {ci.opcode,-10} {ciOperand} {Context}");
+            return CodeMatcher;
         }
 
         public static MeleeWeapon Vomit(this MeleeWeapon MeleeWeapon, int Verbosity, string Title = null, List<string> Categories = null, int Indent = 0, bool Toggle = true)

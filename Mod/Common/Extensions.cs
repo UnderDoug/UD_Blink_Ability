@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Reflection.Emit;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -842,6 +843,37 @@ namespace UD_Blink_Mutation
             => Body.GetEquippedObjects(go => go.HasPart<NaturalEquipment>() || go.HasTag("NaturalGear"))
             ;
 
+        public static string ToLiteral(this string String, bool Quotes = false)
+        {
+            if (String.IsNullOrEmpty())
+                return null;
+
+            string output = Microsoft.CodeAnalysis.CSharp.SymbolDisplay.FormatLiteral(String, false);
+            if (Quotes)
+                output = output.Quote();
+
+            return output;
+        }
+
+        public static bool IsEndOfSection(this OpCode OpCode)
+        {
+            string ciOpcode = OpCode.ToString();
+            return ciOpcode.StartsWith("endfinally")
+                || ciOpcode.StartsWith("pop")
+                || ciOpcode.StartsWith("br")
+                || ciOpcode.StartsWith("be")
+                || ciOpcode.StartsWith("bg")
+                || ciOpcode.StartsWith("bl")
+                || ciOpcode.StartsWith("leave")
+                || ciOpcode.StartsWith("ret")
+                || ciOpcode.StartsWith("st")
+                || ciOpcode.StartsWith("throw");
+        }
+
+        public static LocalBuilder GetLocalAtIndex(this MethodBase MethodBase, int Index)
+            => MethodBase.GetMethodBody().LocalVariables[Index] as LocalBuilder
+            ;
+
         public static T DrawRandomToken<T>(
             this IList<T> Bag,
             T ExceptForToken = null,
@@ -850,7 +882,6 @@ namespace UD_Blink_Mutation
             where T : class
             => Bag.DrawSeededToken((string)null, null, null, ExceptForToken, ExceptForTokens)
             ;
-
 
         public static T DrawSeededToken<T>(
             this IList<T> Bag,
